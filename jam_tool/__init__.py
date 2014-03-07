@@ -21,7 +21,7 @@ The jam library module file.
 """
 
 __author__     = "Christopher Kelley (Tsukumo Chiaki)"
-__copyright__  = "Copyright 2014, Christopher Kelley"
+__copyright__  = "Copyright (C) 2014, Christopher Kelley"
 __credits__    = []
 __license__    = "Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International"
 __version__    = "0.0.1"

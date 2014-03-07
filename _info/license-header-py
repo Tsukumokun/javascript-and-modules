@@ -15,4 +15,15 @@
 # but WITHOUT ANY WARRANTY; without even the implied warranty of
 # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 
+"""
 
+"""
+
+__author__     = "Christopher Kelley (Tsukumo Chiaki)"
+__copyright__  = "Copyright 2014, Christopher Kelley"
+__credits__    = []
+__license__    = "Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International"
+__version__    = "0.0.1"
+__maintainer__ = "Christopher Kelley"
+__email__      = "tsukumokun@icloud.com"
+__status__     = "Development"
