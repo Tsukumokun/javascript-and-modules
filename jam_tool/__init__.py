@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
-#
 # 'jam' - is a compiler for javascript which allows for the
 #         use of modules, providing a way to import and 
 #         minify all of the source files.
@@ -15,7 +14,6 @@
 # This program is distributed in the hope that it will be useful,
 # but WITHOUT ANY WARRANTY; without even the implied warranty of
 # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
-#
 
 
 """
