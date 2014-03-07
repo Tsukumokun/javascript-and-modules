@@ -28,11 +28,11 @@ __status__     = "Development"
 
 
 # project internal imports
-from jam import JAM
+from jam_tool import jam
 
 
 if __name__ == "__main__":
-    program = JAM()
+    program = jam()
     program.run()
 
 
