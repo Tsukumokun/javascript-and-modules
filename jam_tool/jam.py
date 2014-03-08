@@ -15,6 +15,10 @@ __email__      = "tsukumokun@icloud.com"
 __status__     = "Development"
 
 
+# project internal imports
+import jam_tool.utils as utils
+
+
 class Jam:
     """
     @brief The interface which should be used to interact with the tool.
@@ -63,4 +67,4 @@ class Jam:
         @param[in] self The current instance.
         """
         # Verify process is working #< TEMPORARY
-        print ('Jam is running')
+        utils.trace.highlight('Jam is working')

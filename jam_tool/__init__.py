@@ -17,5 +17,4 @@ __status__     = "Development"
 
 from jam_tool.jam import Jam
 
-
 __all__ = ['Jam']

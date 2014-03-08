@@ -32,7 +32,7 @@ import sys
 from inspect import stack, getframeinfo
 
 # project internal imports
-import termcaps as color
+from jam_tool.utils import termcaps as color
 
 # These variables are used to globally turn
 # on or off debug or info messages.
