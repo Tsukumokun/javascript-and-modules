@@ -32,7 +32,6 @@ import sys
 from inspect import stack, getframeinfo
 
 # project internal imports
-#import jam_tool.utils.termcaps as color
 import termcaps as color
 
 # These variables are used to globally turn
