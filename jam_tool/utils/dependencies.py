@@ -36,7 +36,7 @@ def dependency_list(depdict):
         ensures a file which another depends on will come before
         it in the list.
         If there was an error in making the list such as a dependency
-        loop, NullType will be returned.
+        loop, a dictionary with the loop will be returned.
 
     Process:
         Loop through dependencies dictionary doing the following
@@ -45,17 +45,18 @@ def dependency_list(depdict):
         #1< Create a set of files which have no dependencies.
         #2< If this list is empty but the dictionary is not
             it means there is an issue, likely a dependency
-            loop, which means return a NullType.
+            loop, so clean out the files which depend on the
+            loop and return the rest as a dictionary.
         #3< Append this set to the list to be returned.
         #4< Go through the dictionary removing any files
             which have no dependencies left and removing the
             newly added files from the other dependency sets.
 
-
     @param[in] depdict Dictionary of dependencies as specified by
                Requires.
     @return a list of dependencies in the correct order to include as
-            specified by Ensures.
+            specified by Ensures or a dictionary specifying a failure
+            due to a loop in the dependencies.
 
     >>> dependency_list({       \
             'a':Set(['b','c']), \
