@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 """
-The jam library utils dependency tree file.
+The jam library utils dependency list file.
 """
 
 __author__     = "Christopher Kelley (Tsukumo Chiaki)"
@@ -17,6 +17,7 @@ __status__     = "Development"
 
 # python language imports
 from sets import Set
+
 
 def dependency_list(depdict):
     """
@@ -37,20 +38,6 @@ def dependency_list(depdict):
         If there was an error in making the list such as a dependency
         loop, NullType will be returned.
 
-    >>> dependency_list({       \
-            'a':Set(['b','c']), \
-            'b':Set(['c','d']), \
-            'e':Set([]),        \
-            'f':Set(['c','e']), \
-            'g':Set(['h','f']), \
-            'i':Set(['f'])      \
-        })
-    ['h', 'c', 'e', 'd', 'b', 'f', 'a', 'i', 'g']
-    >>> dependency_list({       \
-            'a':Set(['b']),     \
-            'b':Set(['a'])      \
-        })
-
     Process:
         Loop through dependencies dictionary doing the following
         process until there are no more items in the dictionary.
@@ -69,6 +56,41 @@ def dependency_list(depdict):
                Requires.
     @return a list of dependencies in the correct order to include as
             specified by Ensures.
+
+    >>> dependency_list({       \
+            'a':Set(['b','c']), \
+            'b':Set(['c','d']), \
+            'e':Set([]),        \
+            'f':Set(['c','e']), \
+            'g':Set(['h','f']), \
+            'i':Set(['f'])      \
+        })
+    ['h', 'c', 'e', 'd', 'b', 'f', 'a', 'i', 'g']
+    >>> dependency_list({       \
+            'a':Set(['b']),     \
+            'b':Set(['a'])      \
+        })
+    {'a': Set(['b']), 'b': Set(['a'])}
+    >>> dependency_list({       \
+            'a':Set(['b']),     \
+            'b':Set(['c']),     \
+            'c':Set(['a','d']), \
+            'd':Set(['e'])      \
+        })
+    {'a': Set(['b']), 'c': Set(['a']), 'b': Set(['c'])}
+    >>> dependency_list({       \
+            'a':Set(['a']),     \
+            'b':Set(['a'])      \
+        })
+    {'a': Set(['a'])}
+    >>> dependency_list({       \
+            'a':Set(['b']),     \
+            'b':Set(['a']),     \
+            'c':Set(['d']),     \
+            'd':Set(['c'])      \
+        })
+    {'a': Set(['b']), 'c': Set(['d']), 'b': Set(['a']), 'd': Set(['c'])}
+
     """
     deplist=[]
     while depdict:
@@ -83,13 +105,19 @@ def dependency_list(depdict):
 
     #2< # Detect loop
         if not nodep:
-            return None
+            # Remove all keys which are not also values
+            vals = Set(val for item in depdict.values() for val in item)
+            stor = { }
+            for item in depdict:
+                if item in vals:
+                    stor[item] = depdict[item]
+            return stor
 
     #3< # Add items without dependency
         deplist.append(nodep)
 
     #4< # Remove nodeps
-        stor = {}
+        stor = { }
         for item in depdict:
             if depdict[item]:
                 stor[item] = depdict[item] - nodep
