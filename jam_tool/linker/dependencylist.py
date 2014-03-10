@@ -58,40 +58,6 @@ def dependency_list(depdict):
             specified by Ensures or a dictionary specifying a failure
             due to a loop in the dependencies.
 
-    >>> dependency_list({       \
-            'a':Set(['b','c']), \
-            'b':Set(['c','d']), \
-            'e':Set([]),        \
-            'f':Set(['c','e']), \
-            'g':Set(['h','f']), \
-            'i':Set(['f'])      \
-        })
-    ['h', 'c', 'e', 'd', 'b', 'f', 'a', 'i', 'g']
-    >>> dependency_list({       \
-            'a':Set(['b']),     \
-            'b':Set(['a'])      \
-        })
-    {'a': Set(['b']), 'b': Set(['a'])}
-    >>> dependency_list({       \
-            'a':Set(['b']),     \
-            'b':Set(['c']),     \
-            'c':Set(['a','d']), \
-            'd':Set(['e'])      \
-        })
-    {'a': Set(['b']), 'c': Set(['a']), 'b': Set(['c'])}
-    >>> dependency_list({       \
-            'a':Set(['a']),     \
-            'b':Set(['a'])      \
-        })
-    {'a': Set(['a'])}
-    >>> dependency_list({       \
-            'a':Set(['b']),     \
-            'b':Set(['a']),     \
-            'c':Set(['d']),     \
-            'd':Set(['c'])      \
-        })
-    {'a': Set(['b']), 'c': Set(['d']), 'b': Set(['a']), 'd': Set(['c'])}
-
     """
     deplist=[]
     while depdict:
