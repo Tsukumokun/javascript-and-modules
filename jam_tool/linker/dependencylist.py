@@ -15,10 +15,6 @@ __email__      = "tsukumokun@icloud.com"
 __status__     = "Development"
 
 
-# python language imports
-from sets import Set
-
-
 def dependency_list(depdict):
     """
     @brief Given a dictionary of dependencies, returns the order
@@ -62,8 +58,8 @@ def dependency_list(depdict):
     deplist=[]
     while depdict:
     #1< # Independent dependencies, values with no key
-        nodep = Set(dep for item in depdict.values() for dep in item)
-        nodep = nodep - Set(depdict.keys())
+        nodep = set(dep for item in depdict.values() for dep in item)
+        nodep = nodep - set(depdict.keys())
 
         # Independent dependencies, keys with no values
         for item in depdict:
@@ -73,7 +69,7 @@ def dependency_list(depdict):
     #2< # Detect loop
         if not nodep:
             # Remove all keys which are not also values
-            vals = Set(val for item in depdict.values() for val in item)
+            vals = set(val for item in depdict.values() for val in item)
             stor = { }
             for item in depdict:
                 if item in vals:
