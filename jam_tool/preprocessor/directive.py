@@ -38,6 +38,7 @@ class Directive:
         @param[in] self      The current instance.
         @param[in] file_path The path of the new file.
         """
+
         pass
 
     def finish(self):
@@ -45,26 +46,26 @@ class Directive:
         @brief This method will be used to indicate that a file has
                finished being processed.
 
-        Directives can implement this method to return any information
+        Directives should implement this method to return any information
         that should be output into the file for the linker.
 
         @param[in] self The current instance.
-        @return any information needed by the linker as a string
+        @return any information needed by the linker as a dictionary
         """
-        return ""
 
-    def process_line(self,line,line_number):
+        return { }
+
+    def step(self,char):
         """
-        @brief This method will be used to process an indivdua.
+        @brief This method will be used to process an indivdual character.
 
-        Directives can implement this method to return any information
+        Directives can implement this method to collect any information
         that should be output into the file for the linker.
 
         @param[in] self The current instance.
-        @param[in] line The line being processed.
-        @param[in] line_number The line number.
-        @return true if this directive used the line, false otherwise.
+        @param[in] char The character being processed.
         """
-        return False
+
+        pass
 
 
