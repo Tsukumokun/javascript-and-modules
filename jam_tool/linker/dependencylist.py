@@ -5,7 +5,7 @@
 The jam library utils dependency list file.
 """
 
-__author__     = "Christopher Kelley (Tsukumo Chiaki)"
+__author__     = "Christopher Kelley"
 __copyright__  = "Copyright 2014, Christopher Kelley"
 __credits__    = []
 __license__    = "http://creativecommons.org/licenses/by-nc-nd/4.0/deed.en_US"
